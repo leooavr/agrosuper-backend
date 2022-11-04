@@ -10,6 +10,8 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const dotenv = require("dotenv");
+const modules_1 = require("./modules");
+const entities_1 = require("./entities");
 dotenv.config();
 const { TYPEORM_HOST, TYPEORM_USERNAME, TYPEORM_PASSWORD, TYPEORM_DATABASE, TYPEORM_SYNCHRONIZE, } = process.env;
 let AppModule = class AppModule {
@@ -17,13 +19,14 @@ let AppModule = class AppModule {
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
+            modules_1.CommunesModule,
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'postgres',
                 host: TYPEORM_HOST,
                 username: TYPEORM_USERNAME,
                 password: TYPEORM_PASSWORD,
                 database: TYPEORM_DATABASE,
-                entities: [],
+                entities: [entities_1.Provinces, entities_1.Regions, entities_1.Communes, entities_1.SalesChannel],
                 synchronize: TYPEORM_SYNCHRONIZE == 'true' ? true : false,
                 retryDelay: 3000,
                 retryAttempts: 10,

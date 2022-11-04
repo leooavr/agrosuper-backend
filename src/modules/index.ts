@@ -1,0 +1,1 @@
+export { CommunesModule } from "./communes/communes.module";

@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
-import { Provinces, Regions } from '../entities';
+import { Provinces, Regions, Communes, SalesChannel } from '../entities';
 
 dotenv.config();
 
@@ -12,7 +12,7 @@ const {
     TYPEORM_PORT
 } = process.env;
 
-const connectionSource = new DataSource({
+export const connectionSource = new DataSource({
     type: 'postgres',
     host: TYPEORM_HOST,
     port: +TYPEORM_PORT,
@@ -21,7 +21,7 @@ const connectionSource = new DataSource({
     database: TYPEORM_DATABASE,
     logging: true,
     synchronize: false,
-    entities: [Provinces, Regions],
+    entities: [Provinces, Regions, Communes, SalesChannel],
     migrations: ['src/migrations/*.ts'],
 });
 

@@ -2,7 +2,8 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
 
-import { Provinces, Regions } from './entities';
+import { CommunesModule } from "./modules";
+import { Provinces, Regions, Communes, SalesChannel } from './entities';
 
 dotenv.config();
 
@@ -16,13 +17,14 @@ const {
 
 @Module({
   imports: [
+    CommunesModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: TYPEORM_HOST,
       username: TYPEORM_USERNAME,
       password: TYPEORM_PASSWORD,
       database: TYPEORM_DATABASE,
-      entities: [Provinces, Regions],
+      entities: [Provinces, Regions, Communes, SalesChannel],
       synchronize: TYPEORM_SYNCHRONIZE == 'true' ? true : false,
       retryDelay: 3000,
       retryAttempts: 10,
