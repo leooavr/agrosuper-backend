@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
-import { Provinces, Regions, Communes, SalesChannel } from '../entities';
+import { Provinces, Regions, Communes, SalesChannel, ProteinSector } from '../entities';
 
 dotenv.config();
 
@@ -21,7 +21,7 @@ export const connectionSource = new DataSource({
     database: TYPEORM_DATABASE,
     logging: true,
     synchronize: false,
-    entities: [Provinces, Regions, Communes, SalesChannel],
+    entities: [Provinces, Regions, Communes, SalesChannel, ProteinSector],
     migrations: ['src/migrations/*.ts'],
 });
 

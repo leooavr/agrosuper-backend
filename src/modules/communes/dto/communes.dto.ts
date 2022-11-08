@@ -1,9 +1,9 @@
-import { IsOptional, IsString } from "class-validator";
+import { IsOptional, IsString, IsUUID } from "class-validator";
 
 import { ProvincesDto } from '../../provinces/dto/provinces.dto';
 
 export class CommunesDto {
-    @IsString()
+    @IsUUID()
     readonly id: string;
 
     @IsString()
