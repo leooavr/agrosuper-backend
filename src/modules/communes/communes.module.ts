@@ -1,16 +1,14 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from "@nestjs/typeorm";
 
 import { CommunesController } from "./communes.controller";
 import { CommunesService } from "./communes.service";
-import { CommunesRepository } from "../../repositories/communes.repository";
+import { communesProviders } from './communes.provider';
+import { DatabaseModule } from '../../infraestructure/database/database.module';
 
 @Module({
-    imports: [
-        TypeOrmModule.forFeature([CommunesRepository]),
-    ],
+    imports: [DatabaseModule],
     controllers: [CommunesController],
-    providers: [CommunesService]
+    providers: [...communesProviders, CommunesService]
 })
 
 export class CommunesModule {};

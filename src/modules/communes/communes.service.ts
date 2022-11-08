@@ -1,23 +1,21 @@
-import { Injectable, Logger, HttpException, HttpStatus } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
-import { connectionSource } from "../../database/dataSource";
+import { Inject, Injectable, Logger } from "@nestjs/common";
+import { Repository } from "typeorm";
 
-import { CommunesRepository } from '../../repositories/communes.repository';
 import { Communes } from "../../entities/communes.entity";
 
 @Injectable()
 export class CommunesService {
     private logger: Logger = new Logger(CommunesService.name);
-    private communesRepository = connectionSource.getRepository(Communes);
 
     constructor(
-        // @InjectRepository(CommunesRepository) private communesRepository: CommunesRepository,
+        @Inject('COMMUNES_REPOSITORY')
+        private communesRepository: Repository<Communes>,
     ) {}
 
     async getCommunes(): Promise<Communes[]> {
         try {
             this.logger.debug('getting communes');
-            return [];
+            return this.communesRepository.find();
         } catch (error) {
             throw error;
         }
