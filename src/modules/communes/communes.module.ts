@@ -3,10 +3,9 @@ import { Module } from '@nestjs/common';
 import { CommunesController } from "./communes.controller";
 import { CommunesService } from "./communes.service";
 import { communesProviders } from './communes.provider';
-import { DatabaseModule } from '../../infraestructure/database/database.module';
 
 @Module({
-    imports: [DatabaseModule],
+    imports: [],
     controllers: [CommunesController],
     providers: [...communesProviders, CommunesService]
 })
