@@ -2,12 +2,12 @@ import { Module } from '@nestjs/common';
 
 import { CommunesController } from "./communes.controller";
 import { CommunesService } from "./communes.service";
-import { communesProviders } from './communes.provider';
+import { CommunesRepository } from '../../repositories/communes.repository';
 
 @Module({
     imports: [],
     controllers: [CommunesController],
-    providers: [...communesProviders, CommunesService]
+    providers: [CommunesService, CommunesRepository]
 })
 
 export class CommunesModule {};
