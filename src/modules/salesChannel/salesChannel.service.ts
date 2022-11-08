@@ -1,26 +1,19 @@
-import { Injectable, Logger, HttpException, HttpStatus } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
-import { connectionSource } from "../../database/dataSource";
+import { Injectable, Logger } from '@nestjs/common';
 
-import { SalesChannelRepository } from "../../repositories/salesChannel.repository";
-import { SalesChannel } from "../../entities/salesChannel.entity";
+import { SalesChannel } from '../../entities/salesChannel.entity';
 
 @Injectable()
 export class SalesChannelService {
-    private logger: Logger = new Logger(SalesChannel.name);
-    private salesChannelRepository = connectionSource.getRepository(SalesChannel);
+  private logger: Logger = new Logger(SalesChannel.name);
 
-    constructor(
-        // @InjectRepository(SalesChannelRepository) private salesChannelRepository: SalesChannelRepository,
-    ) {}
+  constructor() {}
 
-    async getSalesChannel(): Promise<SalesChannel[]> {
-        try {
-            this.logger.debug('getting salesChannel');
-            return [];
-        } catch (error) {
-            throw error;
-        }
+  async getSalesChannel(): Promise<SalesChannel[]> {
+    try {
+      this.logger.debug('getting salesChannel');
+      return [];
+    } catch (error) {
+      throw error;
     }
-
+  }
 }

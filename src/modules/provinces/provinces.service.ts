@@ -1,25 +1,18 @@
-import { Injectable, Logger, HttpException, HttpStatus } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
-import { connectionSource } from "../../database/dataSource";
+import { Injectable, Logger } from '@nestjs/common';
 
-import { Provinces } from "../../entities/provinces.entity";
-import { ProvincesRepository } from "../../repositories/provinces.repository";
+import { Provinces } from '../../entities/provinces.entity';
 
 @Injectable()
 export class ProvincesService {
-    private logger: Logger = new Logger(ProvincesService.name);
-    private provincesRepository = connectionSource.getRepository(Provinces);
+  private logger: Logger = new Logger(ProvincesService.name);
+  constructor() {}
 
-    constructor(
-        // @InjectRepository(ProvincesRepository) private provincesRepository: ProvincesRepository,
-    ) {}
-    
-    async getProvinces(): Promise<Provinces[]> {
-        try {
-            this.logger.debug('getting provinces');
-            return [];
-        } catch (error) {
-            throw error;
-        }
+  async getProvinces(): Promise<Provinces[]> {
+    try {
+      this.logger.debug('getting provinces');
+      return [];
+    } catch (error) {
+      throw error;
     }
+  }
 }

@@ -1,16 +1,11 @@
-import { Module } from "@nestjs/common";
-import { TypeOrmModule } from "@nestjs/typeorm";
+import { Module } from '@nestjs/common';
 
-import { RegionsController } from "./regions.controller";
-import { RegionsService } from "./regions.service";
-import { RegionsRepository } from "../../repositories/regions.repository";
+import { RegionsController } from './regions.controller';
+import { RegionsService } from './regions.service';
 
 @Module({
-    imports: [
-        TypeOrmModule.forFeature([RegionsRepository]),
-    ],
-    controllers: [RegionsController],
-    providers: [RegionsService]
+  imports: [],
+  controllers: [RegionsController],
+  providers: [RegionsService],
 })
-
-export class RegionsModule {};
+export class RegionsModule {}
