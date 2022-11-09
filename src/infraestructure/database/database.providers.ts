@@ -11,7 +11,7 @@ const {
   TYPEORM_PORT,
 } = process.env;
 
-export const dataSource = new DataSource({
+const dataSource = new DataSource({
   type: 'postgres',
   host: TYPEORM_HOST,
   port: +TYPEORM_PORT,

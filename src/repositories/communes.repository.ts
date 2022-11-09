@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
-import { dataSource } from '../infraestructure/database/database.providers';
+import dataSource from '../infraestructure/database/database.providers';
 import { Communes } from '../entities';
 
 @Injectable()
