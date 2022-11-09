@@ -13,8 +13,8 @@ export class Provinces extends BaseEntity {
     @Column({ name: 'id_region', type: 'int' })
     @JoinColumn({ name: 'id_region' })
     @ManyToOne(() => Regions, (region) => region.provinces)
-    region: Regions
+    region: Regions;
 
     @OneToMany(() => Communes, (commune) => commune.province)
-    commune: Communes[]
+    commune: Communes[];
 }
