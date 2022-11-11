@@ -3,7 +3,7 @@ import { Clients } from './clients.entity';
 
 @Entity()
 export class SalesChannel extends BaseEntity {
-    @PrimaryGeneratedColumn('uuid', {name: 'id_sales_channel'})
+    @PrimaryGeneratedColumn('uuid', { name: 'id_sales_channel' })
     id: string
 
     @Column({ name: 'name', type: 'text' })

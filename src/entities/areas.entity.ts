@@ -2,6 +2,7 @@ import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColu
 
 import { AreaCategory } from "./areasCategory.entity";
 import { Clients } from './clients.entity';
+import { District } from './districts.entity';
 
 @Entity()
 export class Area extends BaseEntity {
@@ -14,7 +15,7 @@ export class Area extends BaseEntity {
     @Column({ name: 'surface', type: 'text'})
     surface: string;
 
-    @Column({ name: 'isUrban', type: 'boolean'})
+    @Column({ name: 'is_urban', type: 'boolean'})
     isUrban: boolean;
 
     @Column({ name: 'participation', type: 'text'})
@@ -24,6 +25,11 @@ export class Area extends BaseEntity {
     @JoinColumn({ name: 'id_area_category'})
     @ManyToOne(() => AreaCategory, (areaCategory) => areaCategory.area)
     areaCategory: AreaCategory;
+
+    @Column({ name: 'id_district', type: 'uuid' })
+    @JoinColumn({ name: 'id_district'})
+    @ManyToOne(() => District, (district) => district.areas)
+    district: District;
 
     @OneToMany(() => Clients, (clients) => clients.area)
     clients: Clients[];

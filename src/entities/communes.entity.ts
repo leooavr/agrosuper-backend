@@ -1,9 +1,12 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 
 import { Provinces } from './provinces.entity';
+
 import { District } from "./districts.entity";
 import { DeliveryZone } from './deliveryZones.entity';
 import { Clients } from "./clients.entity";
+import { BranchOffices } from './branchOffices.entity';
+import { MonthlyCommunalPopulationProjection } from './monthlyCommunalPopulationProjection.entity';
 
 @Entity()
 export class Communes extends BaseEntity {
@@ -18,6 +21,11 @@ export class Communes extends BaseEntity {
     @ManyToOne(() => Provinces, (province) => province.commune)
     province: Provinces
 
+    @Column({ name: 'id_branch_offices', type: 'uuid' })
+    @JoinColumn({ name: 'id_branch_offices'})
+    @ManyToOne(() => BranchOffices, (branchOffice) => branchOffice.communes)
+    branchOffice: BranchOffices;
+
     @OneToMany(() => District, (district) => district.commune)
     district: District[];
 
@@ -26,5 +34,8 @@ export class Communes extends BaseEntity {
 
     @OneToMany(() => Clients, (clients) => clients.commune)
     clients: Clients[];
+
+    @OneToMany(() => MonthlyCommunalPopulationProjection, (monthlyCommunalPopulationProjection) => monthlyCommunalPopulationProjection.commune)
+    monthlyCommunalPopulationProjections: MonthlyCommunalPopulationProjection[];
 
 }
