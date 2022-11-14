@@ -1,10 +1,9 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class addFinalTables1668107551489 implements MigrationInterface {
-    name = 'addFinalTables1668107551489'
+export class lastRevision1668388743789 implements MigrationInterface {
+    name = 'lastRevision1668388743789'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`ALTER TABLE "clients" DROP CONSTRAINT "FK_fd6e686834131a5a8a51e39ef00"`);
         await queryRunner.query(`ALTER TABLE "protein_sector" RENAME COLUMN "id_proteinsector" TO "id_protein_sector"`);
         await queryRunner.query(`ALTER TABLE "protein_sector" RENAME CONSTRAINT "PK_dcf1f20aafb391531533a38eae8" TO "PK_88a3260b9e5a4e42d24582ec07f"`);
         await queryRunner.query(`ALTER TABLE "clients" RENAME COLUMN "id_delivery_zones" TO "id_delivery_zone"`);
