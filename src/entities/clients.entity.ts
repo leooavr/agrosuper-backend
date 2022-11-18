@@ -2,8 +2,8 @@ import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColu
 
 import { SalesChannel } from "./salesChannel.entity";
 import { Communes } from "./communes.entity";
-import { DeliveryZone } from './deliveryZones.entity';
-import { Area } from './areas.entity';
+import { DeliveryZones } from './deliveryZones.entity';
+import { Areas } from './areas.entity';
 import { Sales } from './sales.entity';
 
 @Entity()
@@ -41,13 +41,13 @@ export class Clients extends BaseEntity {
 
     @Column({ name: 'id_delivery_zone', type: 'uuid' })
     @JoinColumn({ name: 'id_delivery_zone' })
-    @ManyToOne(() => DeliveryZone, (deliveryZone) => deliveryZone.clients)
-    deliveryZone: DeliveryZone;
+    @ManyToOne(() => DeliveryZones, (deliveryZone) => deliveryZone.clients)
+    deliveryZone: DeliveryZones;
 
     @Column({ name: 'id_area', type: 'uuid' })
     @JoinColumn({ name: 'id_area' })
-    @ManyToOne(() => Area, (area) => area.clients)
-    area: Area;
+    @ManyToOne(() => Areas, (area) => area.clients)
+    area: Areas;
 
     @OneToMany(() => Sales, (sales) => sales.client)
     sales: Sales[];

@@ -2,11 +2,11 @@ import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColu
 
 import { Provinces } from './provinces.entity';
 
-import { District } from "./districts.entity";
-import { DeliveryZone } from './deliveryZones.entity';
+import { Districts } from "./districts.entity";
+import { DeliveryZones } from './deliveryZones.entity';
 import { Clients } from "./clients.entity";
 import { BranchOffices } from './branchOffices.entity';
-import { MonthlyCommunalPopulationProjection } from './monthlyCommunalPopulationProjection.entity';
+import { MonthlyCommunalPopulationProjection } from './monthlyCommunalPopulationProjections.entity';
 
 @Entity()
 export class Communes extends BaseEntity {
@@ -26,11 +26,11 @@ export class Communes extends BaseEntity {
     @ManyToOne(() => BranchOffices, (branchOffice) => branchOffice.communes)
     branchOffice: BranchOffices;
 
-    @OneToMany(() => District, (district) => district.commune)
-    district: District[];
+    @OneToMany(() => Districts, (district) => district.commune)
+    district: Districts[];
 
-    @OneToMany(() => DeliveryZone, (deliveryZone) => deliveryZone.commune)
-    deliveryZone: DeliveryZone[];
+    @OneToMany(() => DeliveryZones, (deliveryZone) => deliveryZone.commune)
+    deliveryZone: DeliveryZones[];
 
     @OneToMany(() => Clients, (clients) => clients.commune)
     clients: Clients[];

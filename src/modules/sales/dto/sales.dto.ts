@@ -1,7 +1,7 @@
-import { IsOptional, IsString, IsUUID, IsBoolean, IsNumber } from "class-validator";
+import { IsOptional, IsString, IsUUID, IsNumber } from "class-validator";
 
 import { ClientsDto } from '../../clients/dto/clients.dto';
-import { ProteinSectorDto } from '../../proteinSector/dto/proteinSector.dto';
+import { ProteinSectorsDto } from '../../proteinSectors/dto/proteinSectors.dto';
 
 export class SalesDto {
     @IsUUID()
@@ -20,7 +20,7 @@ export class SalesDto {
     readonly salesNeta: number;
 
     @IsOptional()
-    readonly proteinSector: ProteinSectorDto;
+    readonly proteinSector: ProteinSectorsDto;
 
     @IsOptional()
     readonly client: ClientsDto;

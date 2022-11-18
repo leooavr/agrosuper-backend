@@ -1,8 +1,8 @@
-import { IsOptional, IsString, IsUUID, IsBoolean } from "class-validator";
+import { IsOptional, IsString, IsUUID } from "class-validator";
 
 import { CommunesDto } from '../../communes/dto/communes.dto';
 import { AreasDto } from '../../areas/dto/areas.dto';
-import { MonthlyAreaPopulationProjectionsDto } from '../../monthlyAreaPopulationProjection/dto/monthlyAreaPopulationProjections.dto';
+import { MonthlyAreaPopulationProjectionsDto } from '../../monthlyAreaPopulationProjections/dto/monthlyAreaPopulationProjections.dto';
 
 export class DistrictsDto {
     @IsUUID()

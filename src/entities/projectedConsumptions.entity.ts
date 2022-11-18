@@ -1,6 +1,6 @@
 import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
-import { ProteinSector } from './proteinSectors.entity';
+import { ProteinSectors } from './proteinSectors.entity';
 
 @Entity()
 export class ProjectedConsumptions extends BaseEntity {
@@ -18,8 +18,8 @@ export class ProjectedConsumptions extends BaseEntity {
 
     @Column({ name: 'id_protein_sector', type: 'uuid' })
     @JoinColumn({ name: 'id_protein_sector'})
-    @ManyToOne(() => ProteinSector, (proteinSector) => proteinSector.projectedConsumptions)
-    proteinSector: ProteinSector;
+    @ManyToOne(() => ProteinSectors, (proteinSector) => proteinSector.projectedConsumptions)
+    proteinSector: ProteinSectors;
 
     
 }

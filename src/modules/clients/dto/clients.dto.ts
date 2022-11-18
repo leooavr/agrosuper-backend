@@ -1,6 +1,6 @@
 import { IsOptional, IsString, IsUUID, IsNumber } from "class-validator";
 
-import { DeliveryZoneDto } from "src/modules/deliveryZones/dto/deliveryZone.dto";
+import { DeliveryZonesDto } from "src/modules/deliveryZones/dto/deliveryZones.dto";
 import { CommunesDto } from '../../communes/dto/communes.dto';
 import { SalesChannelDto } from '../../salesChannel/dto/salesChannel.dto';
 import { AreasDto } from '../../areas/dto/areas.dto';
@@ -35,7 +35,7 @@ export class ClientsDto {
     readonly saleChannel: SalesChannelDto;
 
     @IsOptional()
-    readonly deliveryZone: DeliveryZoneDto; 
+    readonly deliveryZone: DeliveryZonesDto; 
 
     @IsOptional()
     readonly area: AreasDto;

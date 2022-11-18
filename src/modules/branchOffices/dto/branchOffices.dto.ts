@@ -1,8 +1,8 @@
 import { IsOptional, IsString, IsUUID } from "class-validator";
 
-import { AreasDto } from '../../areas/dto/areas.dto';
+import { CommunesDto } from '../../communes/dto/communes.dto';
 
-export class AreasCategoryDto {
+export class BranchOfficesDto {
     @IsUUID()
     readonly id: string;
 
@@ -10,5 +10,5 @@ export class AreasCategoryDto {
     readonly name: string;
 
     @IsOptional()
-    readonly areaCategory: AreasDto[];
+    readonly commune: CommunesDto[];
 }

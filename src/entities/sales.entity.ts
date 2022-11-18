@@ -1,7 +1,7 @@
 import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import { Clients } from './clients.entity';
-import { ProteinSector } from './proteinSectors.entity';
+import { ProteinSectors } from './proteinSectors.entity';
 
 @Entity()
 export class Sales extends BaseEntity {
@@ -22,8 +22,8 @@ export class Sales extends BaseEntity {
 
     @Column({ name: 'id_protein_sector', type: 'uuid' })
     @JoinColumn({ name: 'id_protein_sector' })
-    @ManyToOne(() => ProteinSector, (proteinSector) => proteinSector.sales)
-    proteinSector: ProteinSector;
+    @ManyToOne(() => ProteinSectors, (proteinSector) => proteinSector.sales)
+    proteinSector: ProteinSectors;
 
     @Column({ name: 'id_client', type: 'uuid' })
     @JoinColumn({ name: 'id_client' })

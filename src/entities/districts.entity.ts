@@ -2,7 +2,7 @@ import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColu
 
 import { Areas } from './areas.entity';
 import { Communes } from "./communes.entity";
-import { MonthlyAreaPopulationProjection } from './monthlyAreaPopulationProjection.entity';
+import { MonthlyAreaPopulationProjections } from './monthlyAreaPopulationProjections.entity';
 
 @Entity()
 export class Districts extends BaseEntity {
@@ -20,6 +20,6 @@ export class Districts extends BaseEntity {
     @OneToMany(() => Areas, (areas) => areas.district)
     areas: Areas[];
 
-    @OneToMany(() => MonthlyAreaPopulationProjection, (monthlyAreaPopulationProjections) => monthlyAreaPopulationProjections.district)
-    monthlyAreaPopulationProjections: MonthlyAreaPopulationProjection[];
+    @OneToMany(() => MonthlyAreaPopulationProjections, (monthlyAreaPopulationProjections) => monthlyAreaPopulationProjections.district)
+    monthlyAreaPopulationProjections: MonthlyAreaPopulationProjections[];
 }

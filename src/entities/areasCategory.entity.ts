@@ -1,6 +1,6 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
-import { Area } from "./areas.entity";
+import { Areas } from "./areas.entity";
 
 @Entity()
 export class AreasCategory extends BaseEntity {
@@ -10,6 +10,6 @@ export class AreasCategory extends BaseEntity {
     @Column({ name: 'name', type: 'text'})
     name: string;
 
-    @OneToMany(() => Area, (area) => area.areaCategory)
-    area: Area[];
+    @OneToMany(() => Areas, (area) => area.areaCategory)
+    area: Areas[];
 }
