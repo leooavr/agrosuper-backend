@@ -1,11 +1,11 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 
-import { AreaCategory } from "./areasCategory.entity";
+import { AreasCategory } from "./areasCategory.entity";
 import { Clients } from './clients.entity';
-import { District } from './districts.entity';
+import { Districts } from './districts.entity';
 
 @Entity()
-export class Area extends BaseEntity {
+export class Areas extends BaseEntity {
     @PrimaryGeneratedColumn('uuid', { name: 'id_area' })
     id: string;
 
@@ -23,13 +23,13 @@ export class Area extends BaseEntity {
 
     @Column({ name: 'id_area_category', type: 'uuid' })
     @JoinColumn({ name: 'id_area_category'})
-    @ManyToOne(() => AreaCategory, (areaCategory) => areaCategory.area)
-    areaCategory: AreaCategory;
+    @ManyToOne(() => AreasCategory, (areaCategory) => areaCategory.area)
+    areaCategory: AreasCategory;
 
     @Column({ name: 'id_district', type: 'uuid' })
     @JoinColumn({ name: 'id_district'})
-    @ManyToOne(() => District, (district) => district.areas)
-    district: District;
+    @ManyToOne(() => Districts, (district) => district.areas)
+    district: Districts;
 
     @OneToMany(() => Clients, (clients) => clients.area)
     clients: Clients[];

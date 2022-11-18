@@ -1,19 +1,23 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger } from "@nestjs/common";
 
-import { SalesChannel } from '../../entities/salesChannel.entity';
+import { SalesChannel } from "../../entities/salesChannel.entity";
+import { SalesChannelRepository } from "../../repositories/salesChannel.repository";
 
 @Injectable()
 export class SalesChannelService {
-  private logger: Logger = new Logger(SalesChannel.name);
+    private logger: Logger = new Logger(SalesChannelService.name);
 
-  constructor() {}
+    constructor(
+        private salesChannelRepository: SalesChannelRepository,
+    ) {}
 
-  async getSalesChannel(): Promise<SalesChannel[]> {
-    try {
-      this.logger.debug('getting salesChannel');
-      return [];
-    } catch (error) {
-      throw error;
+    async getSalesChannel(): Promise<SalesChannel[]> {
+        try {
+            this.logger.debug('getting sales channel');
+            return this.salesChannelRepository.getSalesChannel();
+        } catch (error) {
+            throw error;
+        }
     }
-  }
+
 }

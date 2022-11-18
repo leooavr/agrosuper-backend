@@ -5,7 +5,7 @@ import { ProjectedConsumptions } from './projectedConsumptions.entity';
 import { RealConsumptions } from './realConsumptions.entity';
 
 @Entity()
-export class ProteinSector extends BaseEntity {
+export class ProteinSectors extends BaseEntity {
     @PrimaryGeneratedColumn('uuid', { name: 'id_protein_sector' })
     id: string;
 

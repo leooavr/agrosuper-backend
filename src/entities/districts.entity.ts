@@ -1,11 +1,11 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 
-import { Area } from './areas.entity';
+import { Areas } from './areas.entity';
 import { Communes } from "./communes.entity";
 import { MonthlyAreaPopulationProjection } from './monthlyAreaPopulationProjection.entity';
 
 @Entity()
-export class District extends BaseEntity {
+export class Districts extends BaseEntity {
     @PrimaryGeneratedColumn('uuid', { name: 'id_district' })
     id: string;
 
@@ -17,8 +17,8 @@ export class District extends BaseEntity {
     @ManyToOne(() => Communes, (commune) => commune.district)
     commune: Communes;  
 
-    @OneToMany(() => Area, (areas) => areas.district)
-    areas: Area[];
+    @OneToMany(() => Areas, (areas) => areas.district)
+    areas: Areas[];
 
     @OneToMany(() => MonthlyAreaPopulationProjection, (monthlyAreaPopulationProjections) => monthlyAreaPopulationProjections.district)
     monthlyAreaPopulationProjections: MonthlyAreaPopulationProjection[];

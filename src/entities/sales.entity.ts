@@ -14,11 +14,11 @@ export class Sales extends BaseEntity {
     @Column({ name: 'month', type: 'text' })
     month: string;
 
-    @Column({ name: 'sales_kg', type: 'text' })
-    sales_kg: string;
+    @Column({ name: 'sales_kg', type: 'int' })
+    salesKg: number;
 
-    @Column({ name: 'sales_neta', type: 'text' })
-    sales_neta: string;
+    @Column({ name: 'sales_neta', type: 'int' })
+    salesNeta: number;
 
     @Column({ name: 'id_protein_sector', type: 'uuid' })
     @JoinColumn({ name: 'id_protein_sector' })

@@ -3,7 +3,7 @@ import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, OneToMany } from 't
 import { Area } from "./areas.entity";
 
 @Entity()
-export class AreaCategory extends BaseEntity {
+export class AreasCategory extends BaseEntity {
     @PrimaryGeneratedColumn('uuid', { name: 'id_area_category' })
     id: string;
 
