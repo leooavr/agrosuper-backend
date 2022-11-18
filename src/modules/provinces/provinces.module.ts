@@ -3,10 +3,11 @@ import { Module } from '@nestjs/common';
 import { ProvincesController } from './provinces.controller';
 import { ProvincesService } from './provinces.service';
 import { ProvincesRepository } from '../../repositories/provinces.repository';
+import { RegionsRepository } from '../../repositories/regions.repository';
 
 @Module({
   imports: [],
   controllers: [ProvincesController],
-  providers: [ProvincesService, ProvincesRepository],
+  providers: [ProvincesService, ProvincesRepository, RegionsRepository],
 })
 export class ProvincesModule {}
