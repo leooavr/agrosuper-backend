@@ -1,14 +1,14 @@
-import { IsOptional, IsString, IsUUID } from "class-validator";
+import { IsOptional, IsString, IsUUID } from 'class-validator';
 
 import { AreasDto } from '../../areas/dto/areas.dto';
 
 export class AreasCategoryDto {
-    @IsUUID()
-    readonly id: string;
+  @IsUUID()
+  readonly id: string;
 
-    @IsString()
-    readonly name: string;
+  @IsString()
+  readonly name: string;
 
-    @IsOptional()
-    readonly areaCategory: AreasDto[];
+  @IsOptional()
+  readonly areaCategory: AreasDto[];
 }

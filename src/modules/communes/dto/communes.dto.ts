@@ -1,4 +1,4 @@
-import { IsOptional, IsString, IsUUID } from "class-validator";
+import { IsOptional, IsString, IsUUID } from 'class-validator';
 
 import { ProvincesDto } from '../../provinces/dto/provinces.dto';
 import { BranchOfficesDto } from '../../branchOffices/dto/branchOffices.dto';
@@ -8,27 +8,27 @@ import { ClientsDto } from '../../clients/dto/clients.dto';
 import { MonthlyCommunalPopulationProjectionsDto } from '../../monthlyCommunalPopulationProjections/dto/monthlyCommunalPopulationProjections.dto';
 
 export class CommunesDto {
-    @IsUUID()
-    readonly id: string;
+  @IsUUID()
+  readonly id: string;
 
-    @IsString()
-    readonly name: string;
+  @IsString()
+  readonly name: string;
 
-    @IsOptional()
-    readonly province: ProvincesDto;
+  @IsOptional()
+  readonly province: ProvincesDto;
 
-    @IsOptional()
-    readonly branchOffice: BranchOfficesDto;
+  @IsOptional()
+  readonly branchOffice: BranchOfficesDto;
 
-    @IsOptional()
-    readonly districts: DistrictsDto[];
+  @IsOptional()
+  readonly districts: DistrictsDto[];
 
-    @IsOptional()
-    readonly deliveryZones: DeliveryZonesDto;
+  @IsOptional()
+  readonly deliveryZones: DeliveryZonesDto[];
 
-    @IsOptional()
-    readonly clients: ClientsDto;
+  @IsOptional()
+  readonly clients: ClientsDto[];
 
-    @IsOptional()
-    readonly monthlyCommunalPopulationProjection: MonthlyCommunalPopulationProjectionsDto[];
+  @IsOptional()
+  readonly monthlyCommunalPopulationProjection: MonthlyCommunalPopulationProjectionsDto[];
 }

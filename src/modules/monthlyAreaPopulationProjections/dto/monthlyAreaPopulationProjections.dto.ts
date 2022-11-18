@@ -1,23 +1,29 @@
-import { IsOptional, IsString, IsUUID, IsNumber, IsBoolean } from "class-validator";
+import {
+  IsOptional,
+  IsString,
+  IsUUID,
+  IsNumber,
+  IsBoolean,
+} from 'class-validator';
 
 import { CommunesDto } from '../../communes/dto/communes.dto';
 
 export class MonthlyAreaPopulationProjectionsDto {
-    @IsUUID()
-    readonly id: string;
+  @IsUUID()
+  readonly id: string;
 
-    @IsNumber()
-    readonly year: number;
+  @IsNumber()
+  readonly year: number;
 
-    @IsString()
-    readonly month: string;
+  @IsString()
+  readonly month: string;
 
-    @IsNumber()
-    readonly projection: number;
+  @IsNumber()
+  readonly projection: number;
 
-    @IsBoolean()
-    readonly esReal: boolean;
+  @IsBoolean()
+  readonly esReal: boolean;
 
-    @IsOptional()
-    readonly commune: CommunesDto;
+  @IsOptional()
+  readonly commune: CommunesDto;
 }

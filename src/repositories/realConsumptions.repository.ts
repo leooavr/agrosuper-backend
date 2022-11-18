@@ -5,7 +5,8 @@ import { RealConsumptions } from '../entities';
 
 @Injectable()
 export class RealConsumptionsRepository {
-  private realConsumptionsRepository = dataSource.getRepository(RealConsumptions);
+  private realConsumptionsRepository =
+    dataSource.getRepository(RealConsumptions);
   public async getRealConsumptions(): Promise<RealConsumptions[]> {
     try {
       return this.realConsumptionsRepository.find();

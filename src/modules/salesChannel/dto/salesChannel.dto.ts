@@ -1,14 +1,14 @@
-import { IsOptional, IsString, IsUUID } from "class-validator";
+import { IsOptional, IsString, IsUUID } from 'class-validator';
 
 import { ClientsDto } from '../../clients/dto/clients.dto';
 
 export class SalesChannelDto {
-    @IsUUID()
-    readonly id: string;
+  @IsUUID()
+  readonly id: string;
 
-    @IsString()
-    readonly name: string;
+  @IsString()
+  readonly name: string;
 
-    @IsOptional()
-    readonly clients: ClientsDto[];
+  @IsOptional()
+  readonly clients: ClientsDto[];
 }

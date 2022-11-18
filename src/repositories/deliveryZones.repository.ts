@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 
 import dataSource from '../infraestructure/database/database.providers';
-import { DeliveryZone } from '../entities';
+import { DeliveryZones } from '../entities';
 
 @Injectable()
 export class DeliveryZonesRepository {
-  private deliveryZoneRepository = dataSource.getRepository(DeliveryZone);
-  public async getDeliveryZones(): Promise<DeliveryZone[]> {
+  private deliveryZoneRepository = dataSource.getRepository(DeliveryZones);
+  public async getDeliveryZones(): Promise<DeliveryZones[]> {
     try {
       return this.deliveryZoneRepository.find();
     } catch (error) {

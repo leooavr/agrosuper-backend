@@ -1,23 +1,20 @@
-import { Injectable, Logger } from "@nestjs/common";
+import { Injectable, Logger } from '@nestjs/common';
 
-import { AreasCategory } from "../../entities/areasCategory.entity";
-import { AreasCategoryRepository } from "../../repositories/areasCategory.repository";
+import { AreasCategory } from '../../entities/areasCategory.entity';
+import { AreasCategoryRepository } from '../../repositories/areasCategory.repository';
 
 @Injectable()
 export class AreasCategoryService {
-    private logger: Logger = new Logger(AreasCategoryService.name);
+  private logger: Logger = new Logger(AreasCategoryService.name);
 
-    constructor(
-        private areasCategoryRepository: AreasCategoryRepository,
-    ) {}
+  constructor(private areasCategoryRepository: AreasCategoryRepository) {}
 
-    async getAreasCategory(): Promise<AreasCategory[]> {
-        try {
-            this.logger.debug('getting areas Category');
-            return this.areasCategoryRepository.getAreasCategory();
-        } catch (error) {
-            throw error;
-        }
+  async getAreasCategory(): Promise<AreasCategory[]> {
+    try {
+      this.logger.debug('getting areas Category');
+      return this.areasCategoryRepository.getAreasCategory();
+    } catch (error) {
+      throw error;
     }
-
+  }
 }

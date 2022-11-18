@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 
 import dataSource from '../infraestructure/database/database.providers';
-import { AreaCategory } from '../entities';
+import { AreasCategory } from '../entities';
 
 @Injectable()
 export class AreasCategoryRepository {
-  private areasCategoryRepository = dataSource.getRepository(AreaCategory);
-  public async getAreasCategory(): Promise<AreaCategory[]> {
+  private areasCategoryRepository = dataSource.getRepository(AreasCategory);
+  public async getAreasCategory(): Promise<AreasCategory[]> {
     try {
       return this.areasCategoryRepository.find();
     } catch (error) {

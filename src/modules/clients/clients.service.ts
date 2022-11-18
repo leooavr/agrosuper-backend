@@ -1,23 +1,20 @@
-import { Injectable, Logger } from "@nestjs/common";
+import { Injectable, Logger } from '@nestjs/common';
 
-import { Clients } from "../../entities/clients.entity";
-import { ClientsRepository } from "../../repositories/clients.repository";
+import { Clients } from '../../entities/clients.entity';
+import { ClientsRepository } from '../../repositories/clients.repository';
 
 @Injectable()
 export class ClientsService {
-    private logger: Logger = new Logger(ClientsService.name);
+  private logger: Logger = new Logger(ClientsService.name);
 
-    constructor(
-        private clientsRepository: ClientsRepository,
-    ) {}
+  constructor(private clientsRepository: ClientsRepository) {}
 
-    async getClients(): Promise<Clients[]> {
-        try {
-            this.logger.debug('getting clients');
-            return this.clientsRepository.getClients();
-        } catch (error) {
-            throw error;
-        }
+  async getClients(): Promise<Clients[]> {
+    try {
+      this.logger.debug('getting clients');
+      return this.clientsRepository.getClients();
+    } catch (error) {
+      throw error;
     }
-
+  }
 }

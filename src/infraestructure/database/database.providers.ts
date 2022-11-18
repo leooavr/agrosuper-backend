@@ -1,6 +1,25 @@
 import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
 
+import {
+  Regions,
+  Provinces,
+  Communes,
+  BranchOffices,
+  Districts,
+  Areas,
+  MonthlyAreaPopulationProjections,
+  DeliveryZones,
+  Clients,
+  MonthlyCommunalPopulationProjections,
+  SalesChannel,
+  Sales,
+  ProteinSectors,
+  ProjectedConsumptions,
+  RealConsumptions,
+  AreasCategory,
+} from '../../entities';
+
 dotenv.config();
 
 const {
@@ -21,11 +40,24 @@ const dataSource = new DataSource({
   logging: true,
   synchronize: false,
   entities: [
-      __dirname + '/../../entities/*.entity{.ts,.js}',
+    Regions,
+    Provinces,
+    Communes,
+    BranchOffices,
+    Districts,
+    Areas,
+    MonthlyAreaPopulationProjections,
+    DeliveryZones,
+    Clients,
+    MonthlyCommunalPopulationProjections,
+    SalesChannel,
+    Sales,
+    ProteinSectors,
+    ProjectedConsumptions,
+    RealConsumptions,
+    AreasCategory,
   ],
-  migrations: [
-      __dirname + '/../../migrations/*{.ts,.js}',
-  ],
+  migrations: [__dirname + '/../../migrations/*{.ts,.js}'],
 });
 
 export const databaseProviders = [

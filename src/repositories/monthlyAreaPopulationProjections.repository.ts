@@ -5,8 +5,12 @@ import { MonthlyAreaPopulationProjections } from '../entities';
 
 @Injectable()
 export class MonthlyAreaPopulationProjectionsRepository {
-  private monthlyAreaPopulationProjectionRepository = dataSource.getRepository(MonthlyAreaPopulationProjections);
-  public async getMonthlyAreaPopulationProjections(): Promise<MonthlyAreaPopulationProjections[]> {
+  private monthlyAreaPopulationProjectionRepository = dataSource.getRepository(
+    MonthlyAreaPopulationProjections,
+  );
+  public async getMonthlyAreaPopulationProjections(): Promise<
+    MonthlyAreaPopulationProjections[]
+  > {
     try {
       return this.monthlyAreaPopulationProjectionRepository.find();
     } catch (error) {
