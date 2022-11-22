@@ -18,6 +18,14 @@ export class ProvincesRepository {
     }
   }
 
+  public async getProvinceById(id: string): Promise<Provinces> {
+    try {
+      return this.provincesRepository.findOneBy({ id });
+    } catch (error) {
+      throw error;
+    }
+  }
+
   public async saveProvince(
     createProvincesDto: CreateProvincesDto,
     region: Regions,
