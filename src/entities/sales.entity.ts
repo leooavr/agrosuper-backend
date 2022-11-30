@@ -27,7 +27,7 @@ export class Sales extends BaseEntity {
   @Column({ name: 'sales_neta', type: 'int' })
   salesNeta: number;
 
-  @Column({ name: 'id_protein_sector', type: 'uuid' })
+  @Column({ name: 'id_protein_sector', type: 'int' })
   @JoinColumn({ name: 'id_protein_sector' })
   @ManyToOne(() => ProteinSectors, (proteinSector) => proteinSector.sales)
   proteinSector: ProteinSectors;

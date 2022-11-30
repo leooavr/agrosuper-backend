@@ -1,19 +1,11 @@
-import {
-  BaseEntity,
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-  ManyToOne,
-  JoinColumn,
-  OneToMany,
-} from 'typeorm';
+import { BaseEntity, Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
 
 import { Communes } from './communes.entity';
 
 @Entity()
 export class BranchOffices extends BaseEntity {
-  @PrimaryGeneratedColumn('uuid', { name: 'id_branch_offices' })
-  id: string;
+  @PrimaryColumn({ name: 'id_branch_offices', type: 'int' })
+  id: number;
 
   @Column({ name: 'name', type: 'text' })
   name: string;

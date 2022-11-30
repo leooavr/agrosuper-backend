@@ -24,8 +24,14 @@ export class BranchOfficesService {
   ): Promise<BranchOffices> {
     try {
       this.logger.debug('saving branch office');
-      const { name } = createBranchOfficesDto;
+      const { id, name } = createBranchOfficesDto;
 
+      if (!id) {
+        throw new HttpException(
+          `Param id is undefined`,
+          HttpStatus.BAD_REQUEST,
+        );
+      }
       if (!name) {
         throw new HttpException(
           `Param name is undefined`,
@@ -41,7 +47,7 @@ export class BranchOfficesService {
   }
 
   async updateBranchOffice(
-    id: string,
+    id: number,
     updateBranchOfficesDto: UpdateBranchOfficesDto,
   ): Promise<BranchOffices> {
     try {
@@ -68,7 +74,7 @@ export class BranchOfficesService {
     }
   }
 
-  async deleteBranchOffice(id: string): Promise<BranchOffices> {
+  async deleteBranchOffice(id: number): Promise<BranchOffices> {
     try {
       this.logger.debug('deleting branch office');
       if (!id) {

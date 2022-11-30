@@ -1,4 +1,4 @@
-import { IsOptional, IsString, IsUUID } from 'class-validator';
+import { IsNumber, IsOptional, IsString } from 'class-validator';
 
 import { ProvincesDto } from '../../provinces/dto/provinces.dto';
 import { BranchOfficesDto } from '../../branchOffices/dto/branchOffices.dto';
@@ -8,8 +8,8 @@ import { ClientsDto } from '../../clients/dto/clients.dto';
 import { MonthlyCommunalPopulationProjectionsDto } from '../../monthlyCommunalPopulationProjections/dto/monthlyCommunalPopulationProjections.dto';
 
 export class CommunesDto {
-  @IsUUID()
-  readonly id: string;
+  @IsNumber()
+  readonly id: number;
 
   @IsString()
   readonly name: string;

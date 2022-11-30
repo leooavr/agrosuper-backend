@@ -18,7 +18,7 @@ export class BranchOfficesRepository {
     }
   }
 
-  public async getBranchOfficeById(id: string): Promise<BranchOffices> {
+  public async getBranchOfficeById(id: number): Promise<BranchOffices> {
     try {
       return this.branchOfficeRepository.findOneBy({ id });
     } catch (error) {
@@ -30,9 +30,10 @@ export class BranchOfficesRepository {
     createBranchOfficesDto: CreateBranchOfficesDto,
   ): Promise<BranchOffices> {
     try {
-      const { name } = createBranchOfficesDto;
+      const { id, name } = createBranchOfficesDto;
       const branchOffice = new BranchOffices();
 
+      branchOffice.id = id;
       branchOffice.name = name;
       return this.branchOfficeRepository.save(branchOffice);
     } catch (error) {
@@ -41,7 +42,7 @@ export class BranchOfficesRepository {
   }
 
   public async updateBranchOffice(
-    id: string,
+    id: number,
     updateBranchOfficesDto: UpdateBranchOfficesDto,
   ): Promise<BranchOffices> {
     try {
@@ -55,7 +56,7 @@ export class BranchOfficesRepository {
     }
   }
 
-  public async deleteBranchOffice(id: string): Promise<BranchOffices> {
+  public async deleteBranchOffice(id: number): Promise<BranchOffices> {
     try {
       const branchOffice = await this.branchOfficeRepository.findOneBy({ id });
       return this.branchOfficeRepository.remove(branchOffice);

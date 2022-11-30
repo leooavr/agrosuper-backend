@@ -6,6 +6,7 @@ import {
   ManyToOne,
   JoinColumn,
   OneToMany,
+  PrimaryColumn,
 } from 'typeorm';
 
 import { Provinces } from './provinces.entity';
@@ -18,8 +19,8 @@ import { MonthlyCommunalPopulationProjections } from './monthlyCommunalPopulatio
 
 @Entity()
 export class Communes extends BaseEntity {
-  @PrimaryGeneratedColumn('uuid', { name: 'id_commune' })
-  id: string;
+  @PrimaryColumn({ name: 'id_commune', type: 'int' })
+  id: number;
 
   @Column({ name: 'name', type: 'text' })
   name: string;
@@ -29,7 +30,7 @@ export class Communes extends BaseEntity {
   @ManyToOne(() => Provinces, (province) => province.commune)
   province: Provinces;
 
-  @Column({ name: 'id_branch_offices', type: 'uuid' })
+  @Column({ name: 'id_branch_offices', type: 'int' })
   @JoinColumn({ name: 'id_branch_offices' })
   @ManyToOne(() => BranchOffices, (branchOffice) => branchOffice.communes)
   branchOffice: BranchOffices;

@@ -22,7 +22,7 @@ export class MonthlyAreaPopulationProjectionsDto {
   readonly projection: number;
 
   @IsBoolean()
-  readonly esReal: boolean;
+  readonly isReal: boolean;
 
   @IsOptional()
   readonly commune: CommunesDto;

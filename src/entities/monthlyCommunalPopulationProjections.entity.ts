@@ -26,7 +26,7 @@ export class MonthlyCommunalPopulationProjections extends BaseEntity {
   @Column({ name: 'is_real', type: 'boolean' })
   isReal: boolean;
 
-  @Column({ name: 'id_commune', type: 'uuid' })
+  @Column({ name: 'id_commune', type: 'int' })
   @JoinColumn({ name: 'id_commune' })
   @ManyToOne(
     () => Communes,

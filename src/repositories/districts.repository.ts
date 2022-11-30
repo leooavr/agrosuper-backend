@@ -18,6 +18,14 @@ export class DistrictsRepository {
     }
   }
 
+  public async getDistrictById(id: string): Promise<Districts> {
+    try {
+      return this.districtsRepository.findOneBy({ id });
+    } catch (error) {
+      throw error;
+    }
+  }
+
   public async saveDistrict(
     createCommunesDto: CreateDistrictsDto,
     commune: Communes,

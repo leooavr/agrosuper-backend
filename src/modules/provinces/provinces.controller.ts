@@ -29,14 +29,14 @@ export class ProvincesController {
 
   @Put('/:id')
   async updateProvince(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() updateProvincesDto: UpdateProvincesDto,
   ): Promise<Provinces> {
     return await this.provincesService.updateProvince(id, updateProvincesDto);
   }
 
   @Delete('/:id')
-  async deleteProvince(@Param('id') id: string): Promise<Provinces> {
+  async deleteProvince(@Param('id') id: number): Promise<Provinces> {
     return await this.provincesService.deleteProvince(id);
   }
 }

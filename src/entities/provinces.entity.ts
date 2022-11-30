@@ -2,18 +2,19 @@ import {
   BaseEntity,
   Column,
   Entity,
-  PrimaryGeneratedColumn,
   ManyToOne,
   OneToMany,
   JoinColumn,
+  PrimaryColumn,
 } from 'typeorm';
+
 import { Regions } from './regions.entity';
 import { Communes } from './communes.entity';
 
 @Entity()
 export class Provinces extends BaseEntity {
-  @PrimaryGeneratedColumn('uuid', { name: 'id_province' })
-  id: string;
+  @PrimaryColumn({ name: 'id_province', type: 'int' })
+  id: number;
 
   @Column({ name: 'name', type: 'text', nullable: true })
   name: string;

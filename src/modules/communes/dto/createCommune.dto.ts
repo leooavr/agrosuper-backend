@@ -1,12 +1,15 @@
-import { IsString } from 'class-validator';
+import { IsString, IsNumber } from 'class-validator';
 
 export class CreateCommunesDto {
+  @IsNumber()
+  readonly id: number;
+
   @IsString()
   readonly name: string;
 
   @IsString()
-  readonly idProvince: string;
+  readonly idProvince: number;
 
   @IsString()
-  readonly idBranchOffice: string;
+  readonly idBranchOffice: number;
 }

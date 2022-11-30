@@ -34,10 +34,7 @@ export class Clients extends BaseEntity {
   @Column({ name: 'social_reason', type: 'text' })
   socialReason: string;
 
-  @Column({ name: 'local_client', type: 'bigint' })
-  localClient: number;
-
-  @Column({ name: 'id_commune', type: 'uuid' })
+  @Column({ name: 'id_commune', type: 'int' })
   @JoinColumn({ name: 'id_commune' })
   @ManyToOne(() => Communes, (commune) => commune.clients)
   commune: Communes;

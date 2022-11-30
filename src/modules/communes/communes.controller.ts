@@ -29,14 +29,14 @@ export class CommunesController {
 
   @Put('/:id')
   async updateCommune(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() updateCommunesDto: UpdateCommunesDto,
   ): Promise<Communes> {
     return await this.communesService.updateCommune(id, updateCommunesDto);
   }
 
   @Delete('/:id')
-  async deleteCommune(@Param('id') id: string): Promise<Communes> {
+  async deleteCommune(@Param('id') id: number): Promise<Communes> {
     return await this.communesService.deleteCommune(id);
   }
 }

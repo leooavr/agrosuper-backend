@@ -18,7 +18,7 @@ export class ProvincesRepository {
     }
   }
 
-  public async getProvinceById(id: string): Promise<Provinces> {
+  public async getProvinceById(id: number): Promise<Provinces> {
     try {
       return this.provincesRepository.findOneBy({ id });
     } catch (error) {
@@ -31,9 +31,10 @@ export class ProvincesRepository {
     region: Regions,
   ): Promise<Provinces> {
     try {
-      const { name } = createProvincesDto;
+      const { id, name } = createProvincesDto;
       const province = new Provinces();
 
+      province.id = id;
       province.name = name;
       province.region = region;
       return this.provincesRepository.save(province);
@@ -43,7 +44,7 @@ export class ProvincesRepository {
   }
 
   public async updateProvince(
-    id: string,
+    id: number,
     updateProvinceDto: UpdateProvincesDto,
     region: Regions,
   ): Promise<Provinces> {
@@ -60,7 +61,7 @@ export class ProvincesRepository {
     }
   }
 
-  public async deleteProvince(id: string): Promise<Provinces> {
+  public async deleteProvince(id: number): Promise<Provinces> {
     try {
       const province = await this.provincesRepository.findOneBy({ id });
       return this.provincesRepository.remove(province);

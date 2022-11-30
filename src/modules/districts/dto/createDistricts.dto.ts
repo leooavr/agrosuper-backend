@@ -5,5 +5,5 @@ export class CreateDistrictsDto {
   readonly name: string;
 
   @IsString()
-  readonly idCommune: string;
+  readonly idCommune: number;
 }

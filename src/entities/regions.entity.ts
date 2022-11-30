@@ -1,9 +1,9 @@
-import { BaseEntity, Column, Entity, OneToMany } from 'typeorm';
+import { BaseEntity, Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
 import { Provinces } from './provinces.entity';
 
 @Entity()
 export class Regions extends BaseEntity {
-  @Column({ name: 'id_region', type: 'int', primary: true })
+  @PrimaryColumn({ name: 'id_region', type: 'int' })
   id: number;
 
   @Column({ name: 'name', type: 'text', nullable: true })

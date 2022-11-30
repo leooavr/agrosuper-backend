@@ -24,7 +24,7 @@ export class MonthlyAreaPopulationProjections extends BaseEntity {
   projection: number;
 
   @Column({ name: 'es_real', type: 'boolean' })
-  esReal: boolean;
+  isReal: boolean;
 
   @Column({ name: 'id_district', type: 'uuid' })
   @JoinColumn({ name: 'id_district' })

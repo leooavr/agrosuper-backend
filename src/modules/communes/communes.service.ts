@@ -28,8 +28,14 @@ export class CommunesService {
   async createCommune(createCommuneDto: CreateCommunesDto): Promise<Communes> {
     try {
       this.logger.debug('saving commune');
-      const { name, idProvince, idBranchOffice } = createCommuneDto;
+      const { id, name, idProvince, idBranchOffice } = createCommuneDto;
 
+      if (!id) {
+        throw new HttpException(
+          `Param id is undefined`,
+          HttpStatus.BAD_REQUEST,
+        );
+      }
       if (!name) {
         throw new HttpException(
           `Param name is undefined`,
@@ -53,7 +59,7 @@ export class CommunesService {
       );
       if (!province) {
         throw new HttpException(
-          `Region with id=${idProvince} not found`,
+          `Province with id=${idProvince} not found`,
           HttpStatus.BAD_REQUEST,
         );
       }
@@ -61,7 +67,7 @@ export class CommunesService {
         await this.branchOfficeRepository.getBranchOfficeById(idBranchOffice);
       if (!branchOffice) {
         throw new HttpException(
-          `Region with id=${idBranchOffice} not found`,
+          `Branch Office with id=${idBranchOffice} not found`,
           HttpStatus.BAD_REQUEST,
         );
       }
@@ -76,12 +82,12 @@ export class CommunesService {
   }
 
   async updateCommune(
-    id: string,
+    id: number,
     updateCommunesDto: UpdateCommunesDto,
   ): Promise<Communes> {
     try {
       this.logger.debug('updating commune');
-      const { name, idProvince, idBranchOffice } = updateCommunesDto;
+      const { id, name, idProvince, idBranchOffice } = updateCommunesDto;
       if (!id) {
         throw new HttpException(
           `Param id is undefined`,
@@ -134,7 +140,7 @@ export class CommunesService {
     }
   }
 
-  async deleteCommune(id: string): Promise<Communes> {
+  async deleteCommune(id: number): Promise<Communes> {
     try {
       this.logger.debug('deleting commune');
       if (!id) {

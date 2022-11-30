@@ -15,7 +15,7 @@ export class CommunesRepository {
     }
   }
 
-  public async getCommuneById(id: string): Promise<Communes> {
+  public async getCommuneById(id: number): Promise<Communes> {
     try {
       return this.communesRepository.findOneBy({ id });
     } catch (error) {
@@ -29,9 +29,10 @@ export class CommunesRepository {
     branchOffice: BranchOffices,
   ): Promise<Communes> {
     try {
-      const { name } = createCommunesDto;
+      const { id, name } = createCommunesDto;
       const commune = new Communes();
 
+      commune.id = id;
       commune.name = name;
       commune.province = province;
       commune.branchOffice = branchOffice;
@@ -42,7 +43,7 @@ export class CommunesRepository {
   }
 
   public async updateCommune(
-    id: string,
+    id: number,
     updateCommunesDto: UpdateCommunesDto,
     province: Provinces,
     branchOffice: BranchOffices,
@@ -61,7 +62,7 @@ export class CommunesRepository {
     }
   }
 
-  public async deleteCommune(id: string): Promise<Communes> {
+  public async deleteCommune(id: number): Promise<Communes> {
     try {
       const commune = await this.communesRepository.findOneBy({ id });
       return this.communesRepository.remove(commune);

@@ -27,8 +27,14 @@ export class ProvincesService {
   ): Promise<Provinces> {
     try {
       this.logger.debug('saving province');
-      const { name, idRegion } = createProvincesDto;
+      const { id, name, idRegion } = createProvincesDto;
 
+      if (!id) {
+        throw new HttpException(
+          `Param id is undefined`,
+          HttpStatus.BAD_REQUEST,
+        );
+      }
       if (!name) {
         throw new HttpException(
           `Param name is undefined`,
@@ -55,7 +61,7 @@ export class ProvincesService {
   }
 
   async updateProvince(
-    id: string,
+    id: number,
     updateProvincesDto: UpdateProvincesDto,
   ): Promise<Provinces> {
     try {
@@ -96,7 +102,7 @@ export class ProvincesService {
     }
   }
 
-  async deleteProvince(id: string): Promise<Provinces> {
+  async deleteProvince(id: number): Promise<Provinces> {
     try {
       this.logger.debug('deleting province');
       if (!id) {

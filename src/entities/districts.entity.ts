@@ -20,7 +20,7 @@ export class Districts extends BaseEntity {
   @Column({ name: 'name', type: 'text' })
   name: string;
 
-  @Column({ name: 'id_commune', type: 'uuid' })
+  @Column({ name: 'id_commune', type: 'int' })
   @JoinColumn({ name: 'id_commune' })
   @ManyToOne(() => Communes, (commune) => commune.district)
   commune: Communes;

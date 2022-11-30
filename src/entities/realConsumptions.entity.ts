@@ -23,7 +23,7 @@ export class RealConsumptions extends BaseEntity {
   @Column({ name: 'consumption', type: 'int' })
   consumption: number;
 
-  @Column({ name: 'id_protein_sector', type: 'uuid' })
+  @Column({ name: 'id_protein_sector', type: 'int' })
   @JoinColumn({ name: 'id_protein_sector' })
   @ManyToOne(
     () => ProteinSectors,
