@@ -144,7 +144,7 @@ export class ClientsService {
 
   async updateClient(
     id: string,
-    createClientDto: CreateClientsDto,
+    updateClientDto: UpdateClientsDto,
   ): Promise<Clients> {
     try {
       this.logger.debug('saving Client');
@@ -158,7 +158,7 @@ export class ClientsService {
         idCommune,
         idDeliveryZone,
         idSaleChannel,
-      } = createClientDto;
+      } = updateClientDto;
 
       if (!socialReason) {
         throw new HttpException(
@@ -248,7 +248,7 @@ export class ClientsService {
 
       return this.clientsRepository.updateClient(
         id,
-        createClientDto,
+        updateClientDto,
         area,
         deliveryZone,
         commune,

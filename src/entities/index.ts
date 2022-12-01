@@ -1,3 +1,4 @@
+export { Users } from './users.entity';
 export { Areas } from './areas.entity';
 export { AreasCategory } from './areasCategory.entity';
 export { BranchOffices } from './branchOffices.entity';

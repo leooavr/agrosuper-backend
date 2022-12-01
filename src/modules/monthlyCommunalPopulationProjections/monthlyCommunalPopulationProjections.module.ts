@@ -9,9 +9,14 @@ import { CommunesRepository } from '../../repositories/communes.repository';
   imports: [],
   controllers: [MonthlyCommunalPopulationProjectionsController],
   providers: [
-    MonthlyCommunalPopulationProjectionsService,
-    MonthlyCommunalPopulationProjectionsRepository,
+    {
+      provide: 'clase',
+      useClass: MonthlyCommunalPopulationProjectionsService},
     CommunesRepository,
+    {
+      provide: 'monthlyCommunalPopulationProjectionsRepository',
+      useClass: MonthlyCommunalPopulationProjectionsRepository,
+    },
   ],
 })
 export class MonthlyCommunalPopulationProjectionsModule {}

@@ -15,7 +15,7 @@ export class MonthlyCommunalPopulationProjectionsRepository {
     MonthlyCommunalPopulationProjections[]
   > {
     try {
-      return this.monthlyCommunalPopulationProjectionRepository.find();
+      return this.monthlyCommunalPopulationProjectionRepository.find({ relations: ['commune', 'commune.province.region', 'commune.branchOffice']});
     } catch (error) {
       throw error;
     }
@@ -64,18 +64,18 @@ export class MonthlyCommunalPopulationProjectionsRepository {
     try {
       const { isReal, year, month, projection } =
         updateMonthlyCommunalPopulationProjectionsDto;
-      const MonthlyCommunalPopulationProjection =
+      const monthlyCommunalPopulationProjection =
         await this.monthlyCommunalPopulationProjectionRepository.findOneBy({
           id,
         });
 
-      MonthlyCommunalPopulationProjection.isReal = isReal;
-      MonthlyCommunalPopulationProjection.year = year;
-      MonthlyCommunalPopulationProjection.month = month;
-      MonthlyCommunalPopulationProjection.projection = projection;
-      MonthlyCommunalPopulationProjection.commune = commune;
+      monthlyCommunalPopulationProjection.isReal = isReal;
+      monthlyCommunalPopulationProjection.year = year;
+      monthlyCommunalPopulationProjection.month = month;
+      monthlyCommunalPopulationProjection.projection = projection;
+      monthlyCommunalPopulationProjection.commune = commune;
       return this.monthlyCommunalPopulationProjectionRepository.save(
-        MonthlyCommunalPopulationProjection,
+        monthlyCommunalPopulationProjection,
       );
     } catch (error) {
       throw error;

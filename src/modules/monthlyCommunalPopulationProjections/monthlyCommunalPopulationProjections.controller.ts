@@ -6,6 +6,7 @@ import {
   Put,
   Param,
   Delete,
+  Inject
 } from '@nestjs/common';
 
 import { MonthlyCommunalPopulationProjectionsService } from './monthlyCommunalPopulationProjections.service';
@@ -18,7 +19,7 @@ import {
 @Controller('monthlyCommunalPopulationProjection')
 export class MonthlyCommunalPopulationProjectionsController {
   constructor(
-    private readonly monthlyCommunalPopulationProjectionsService: MonthlyCommunalPopulationProjectionsService,
+    @Inject('clase') private readonly monthlyCommunalPopulationProjectionsService: MonthlyCommunalPopulationProjectionsService,
   ) {}
   @Get()
   async getMonthlyCommunalPopulationProjection(): Promise<

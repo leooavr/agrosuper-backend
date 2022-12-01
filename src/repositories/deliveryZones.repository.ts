@@ -5,7 +5,7 @@ import { DeliveryZones } from '../entities';
 import {
   CreateDeliveryZonesDto,
   UpdateDeliveryZonesDto,
-} from 'src/modules/deliveryZones/dto';
+} from '../modules/deliveryZones/dto';
 import { Communes } from '../entities/communes.entity';
 
 @Injectable()
@@ -13,7 +13,7 @@ export class DeliveryZonesRepository {
   private deliveryZoneRepository = dataSource.getRepository(DeliveryZones);
   public async getDeliveryZones(): Promise<DeliveryZones[]> {
     try {
-      return this.deliveryZoneRepository.find();
+      return this.deliveryZoneRepository.find({ relations: ['commune']});
     } catch (error) {
       throw error;
     }

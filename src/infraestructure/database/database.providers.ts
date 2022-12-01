@@ -18,6 +18,7 @@ import {
   ProjectedConsumptions,
   RealConsumptions,
   AreasCategory,
+  Users
 } from '../../entities';
 
 dotenv.config();
@@ -56,6 +57,7 @@ const dataSource = new DataSource({
     ProjectedConsumptions,
     RealConsumptions,
     AreasCategory,
+    Users
   ],
   migrations: [__dirname + '/../../migrations/*{.ts,.js}'],
 });

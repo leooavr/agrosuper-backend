@@ -9,7 +9,7 @@ export class CommunesRepository {
   private communesRepository = dataSource.getRepository(Communes);
   public async getCommunes(): Promise<Communes[]> {
     try {
-      return this.communesRepository.find();
+      return this.communesRepository.find({relations: ['province', 'province.region', 'branchOffice']});
     } catch (error) {
       throw error;
     }
@@ -50,13 +50,13 @@ export class CommunesRepository {
   ): Promise<Communes> {
     try {
       const { name } = updateCommunesDto;
-      const Commune = await this.communesRepository.findOneBy({ id });
+      const commune = await this.communesRepository.findOneBy({ id });
 
-      Commune.name = name;
-      Commune.province = province;
-      Commune.branchOffice = branchOffice;
+      commune.name = name;
+      commune.province = province;
+      commune.branchOffice = branchOffice;
 
-      return this.communesRepository.save(Commune);
+      return this.communesRepository.save(commune);
     } catch (error) {
       throw error;
     }

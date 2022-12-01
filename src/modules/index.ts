@@ -14,3 +14,4 @@ export { RealConsumptionsModule } from './realConsumptions/realConsumptions.modu
 export { RegionsModule } from './regions/regions.module';
 export { SalesModule } from './sales/sales.module';
 export { SalesChannelModule } from './salesChannel/salesChannel.module';
+export { UsersModule } from './users/users.module';

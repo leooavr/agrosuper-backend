@@ -17,6 +17,7 @@ import {
   RegionsModule,
   SalesChannelModule,
   SalesModule,
+  UsersModule
 } from './modules';
 
 import { DatabaseModule } from './infraestructure';
@@ -31,14 +32,15 @@ import { DatabaseModule } from './infraestructure';
     AreasModule,
     MonthlyAreaPopulationProjectionsModule,
     DeliveryZonesModule,
-    ClientsModule,
     MonthlyCommunalPopulationProjectionsModule,
+    ClientsModule,
     SalesChannelModule,
     SalesModule,
     ProteinSectorsModule,
     ProjectedConsumptionsModule,
     RealConsumptionsModule,
     AreasCategoryModule,
+    UsersModule
   ],
   controllers: [],
   providers: [],
