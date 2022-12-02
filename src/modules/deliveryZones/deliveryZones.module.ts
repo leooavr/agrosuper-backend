@@ -8,9 +8,13 @@ import { CommunesRepository } from '../../repositories/communes.repository';
 @Module({
   imports: [],
   controllers: [DeliveryZonesController],
-  providers: [DeliveryZonesService, CommunesRepository, {
-    provide: 'deliveryZonesRepository',
-    useClass: DeliveryZonesRepository
-  }],
+  providers: [
+    DeliveryZonesService,
+    CommunesRepository,
+    {
+      provide: 'deliveryZonesRepository',
+      useClass: DeliveryZonesRepository,
+    },
+  ],
 })
 export class DeliveryZonesModule {}

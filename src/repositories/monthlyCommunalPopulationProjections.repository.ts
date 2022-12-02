@@ -15,7 +15,13 @@ export class MonthlyCommunalPopulationProjectionsRepository {
     MonthlyCommunalPopulationProjections[]
   > {
     try {
-      return this.monthlyCommunalPopulationProjectionRepository.find({ relations: ['commune', 'commune.province.region', 'commune.branchOffice']});
+      return this.monthlyCommunalPopulationProjectionRepository.find({
+        relations: [
+          'commune',
+          'commune.province.region',
+          'commune.branchOffice',
+        ],
+      });
     } catch (error) {
       throw error;
     }

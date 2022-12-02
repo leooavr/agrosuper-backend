@@ -12,5 +12,4 @@ export class UpdateUsersDto {
 
   @IsString()
   readonly rut: string;
-
 }

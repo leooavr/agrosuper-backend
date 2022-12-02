@@ -13,7 +13,7 @@ export class DeliveryZonesRepository {
   private deliveryZoneRepository = dataSource.getRepository(DeliveryZones);
   public async getDeliveryZones(): Promise<DeliveryZones[]> {
     try {
-      return this.deliveryZoneRepository.find({ relations: ['commune']});
+      return this.deliveryZoneRepository.find({ relations: ['commune'] });
     } catch (error) {
       throw error;
     }

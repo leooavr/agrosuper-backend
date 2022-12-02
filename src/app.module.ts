@@ -17,7 +17,8 @@ import {
   RegionsModule,
   SalesChannelModule,
   SalesModule,
-  UsersModule
+  UsersModule,
+  AuthModule,
 } from './modules';
 
 import { DatabaseModule } from './infraestructure';
@@ -40,7 +41,8 @@ import { DatabaseModule } from './infraestructure';
     ProjectedConsumptionsModule,
     RealConsumptionsModule,
     AreasCategoryModule,
-    UsersModule
+    UsersModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],

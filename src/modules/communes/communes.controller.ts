@@ -6,12 +6,15 @@ import {
   Put,
   Delete,
   Param,
+  UseGuards,
 } from '@nestjs/common';
+import { JwtAuthGuard } from '../../security/guards/jwt-auth.guard';
 
 import { CommunesService } from './communes.service';
 import { Communes } from '../../entities/communes.entity';
 import { CreateCommunesDto, UpdateCommunesDto } from './dto';
 
+@UseGuards(JwtAuthGuard)
 @Controller('communes')
 export class CommunesController {
   constructor(private readonly communesService: CommunesService) {}

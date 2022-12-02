@@ -1,4 +1,10 @@
-import { Injectable, Logger, HttpStatus, HttpException, Inject } from '@nestjs/common';
+import {
+  Injectable,
+  Logger,
+  HttpStatus,
+  HttpException,
+  Inject,
+} from '@nestjs/common';
 
 import { MonthlyCommunalPopulationProjections } from '../../entities/monthlyCommunalPopulationProjections.entity';
 import { MonthlyCommunalPopulationProjectionsRepository } from '../../repositories/monthlyCommunalPopulationProjections.repository';
@@ -11,11 +17,12 @@ import { CommunesRepository } from '../../repositories/communes.repository';
 @Injectable()
 export class MonthlyCommunalPopulationProjectionsService {
   private logger: Logger = new Logger(
-    MonthlyCommunalPopulationProjectionsService.name
+    MonthlyCommunalPopulationProjectionsService.name,
   );
 
   constructor(
-    @Inject('monthlyCommunalPopulationProjectionsRepository') private monthlyCommunalPopulationProjectionsRepository: MonthlyCommunalPopulationProjectionsRepository,
+    @Inject('monthlyCommunalPopulationProjectionsRepository')
+    private monthlyCommunalPopulationProjectionsRepository: MonthlyCommunalPopulationProjectionsRepository,
     private readonly communesRepository: CommunesRepository,
   ) {}
 

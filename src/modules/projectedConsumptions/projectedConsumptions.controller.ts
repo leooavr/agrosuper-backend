@@ -6,7 +6,9 @@ import {
   Put,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
+import { JwtAuthGuard } from '../../security/guards/jwt-auth.guard';
 
 import { ProjectedConsumptionsService } from './projectedConsumptions.service';
 import { ProjectedConsumptions } from '../../entities/projectedConsumptions.entity';
@@ -15,6 +17,7 @@ import {
   UpdateProjectedConsumptionsDto,
 } from './dto';
 
+@UseGuards(JwtAuthGuard)
 @Controller('projectedConsumptions')
 export class ProjectedConsumptionsController {
   constructor(

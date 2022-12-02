@@ -1,4 +1,10 @@
-import { Injectable, Logger, HttpStatus, HttpException, Inject } from '@nestjs/common';
+import {
+  Injectable,
+  Logger,
+  HttpStatus,
+  HttpException,
+  Inject,
+} from '@nestjs/common';
 
 import { CommunesRepository } from '../../repositories/communes.repository';
 import { DeliveryZones } from '../../entities/deliveryZones.entity';
@@ -13,7 +19,8 @@ export class DeliveryZonesService {
   private logger: Logger = new Logger(DeliveryZonesService.name);
 
   constructor(
-    @Inject('deliveryZonesRepository') private deliveryZonesRepository: DeliveryZonesRepository,
+    @Inject('deliveryZonesRepository')
+    private deliveryZonesRepository: DeliveryZonesRepository,
     private readonly communesRepository: CommunesRepository,
   ) {}
 

@@ -11,7 +11,8 @@ import { CommunesRepository } from '../../repositories/communes.repository';
   providers: [
     {
       provide: 'clase',
-      useClass: MonthlyCommunalPopulationProjectionsService},
+      useClass: MonthlyCommunalPopulationProjectionsService,
+    },
     CommunesRepository,
     {
       provide: 'monthlyCommunalPopulationProjectionsRepository',

@@ -15,3 +15,4 @@ export { RegionsModule } from './regions/regions.module';
 export { SalesModule } from './sales/sales.module';
 export { SalesChannelModule } from './salesChannel/salesChannel.module';
 export { UsersModule } from './users/users.module';
+export { AuthModule } from './auth/auth.module';

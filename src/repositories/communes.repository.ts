@@ -9,7 +9,9 @@ export class CommunesRepository {
   private communesRepository = dataSource.getRepository(Communes);
   public async getCommunes(): Promise<Communes[]> {
     try {
-      return this.communesRepository.find({relations: ['province', 'province.region', 'branchOffice']});
+      return this.communesRepository.find({
+        relations: ['province', 'province.region', 'branchOffice'],
+      });
     } catch (error) {
       throw error;
     }

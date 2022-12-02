@@ -15,5 +15,4 @@ export class UsersDto {
 
   @IsString()
   readonly rut: string;
-
 }
