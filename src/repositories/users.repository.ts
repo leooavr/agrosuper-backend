@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 import dataSource from '../infraestructure/database/database.providers';
 import { Users } from '../entities';
-import { CreateUsersDto, UpdateUsersDto } from "../modules/users/dto";
+import { CreateUsersDto, UpdateUsersDto } from '../modules/users/dto';
 
 @Injectable()
 export class UsersRepository {
@@ -23,9 +23,7 @@ export class UsersRepository {
     }
   }
 
-  public async saveUser(
-    createUserDto: CreateUsersDto,
-  ): Promise<Users> {
+  public async saveUser(createUserDto: CreateUsersDto): Promise<Users> {
     try {
       const { name, password, email, rut } = createUserDto;
       const user = new Users();

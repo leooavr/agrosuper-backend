@@ -24,27 +24,20 @@ export class UsersController {
   }
 
   @Post()
-    async createUser(
-      @Body() createUserDto: CreateUsersDto,
-    ): Promise<Users> {
-      return await this.userService.createUser(
-        createUserDto,
-      );
-    }
-  
-    @Put('/:id')
-    async updateUser(
-      @Param('id') id: string,
-      @Body() updateUserDto: UpdateUsersDto,
-    ): Promise<Users> {
-      return await this.userService.updateUser(
-        id,
-        updateUserDto,
-      );
-    }
-  
-    @Delete('/:id')
-    async deleteUser(@Param('id') id: string): Promise<Users> {
-      return await this.userService.deleteUser(id);
-    }
+  async createUser(@Body() createUserDto: CreateUsersDto): Promise<Users> {
+    return await this.userService.createUser(createUserDto);
+  }
+
+  @Put('/:id')
+  async updateUser(
+    @Param('id') id: string,
+    @Body() updateUserDto: UpdateUsersDto,
+  ): Promise<Users> {
+    return await this.userService.updateUser(id, updateUserDto);
+  }
+
+  @Delete('/:id')
+  async deleteUser(@Param('id') id: string): Promise<Users> {
+    return await this.userService.deleteUser(id);
+  }
 }

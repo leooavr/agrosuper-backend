@@ -2,7 +2,7 @@ import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
 
 import { Users } from '../../entities/Users.entity';
 import { UsersRepository } from '../../repositories/Users.repository';
-import { CreateUsersDto, UpdateUsersDto } from "./dto";
+import { CreateUsersDto, UpdateUsersDto } from './dto';
 
 @Injectable()
 export class UsersService {
@@ -48,18 +48,13 @@ export class UsersService {
           HttpStatus.BAD_REQUEST,
         );
       }
-      return this.usersRepository.saveUser(
-        createUserDto,
-      );
+      return this.usersRepository.saveUser(createUserDto);
     } catch (error) {
       throw error;
     }
   }
 
-  async updateUser(
-    id: string,
-    updateUserDto: UpdateUsersDto
-    ): Promise<Users> {
+  async updateUser(id: string, updateUserDto: UpdateUsersDto): Promise<Users> {
     try {
       this.logger.debug('updating User');
       const { name, password, email, rut } = updateUserDto;
@@ -88,10 +83,7 @@ export class UsersService {
           HttpStatus.BAD_REQUEST,
         );
       }
-      return this.usersRepository.updateUser(
-        id,
-        updateUserDto,
-      );
+      return this.usersRepository.updateUser(id, updateUserDto);
     } catch (error) {
       throw error;
     }
