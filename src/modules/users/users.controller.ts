@@ -14,7 +14,7 @@ import { UsersService } from './users.service';
 import { Users } from '../../entities/users.entity';
 import { CreateUsersDto, UpdateUsersDto } from './dto';
 
-@UseGuards(JwtAuthGuard)
+//@UseGuards(JwtAuthGuard)
 @Controller('user')
 export class UsersController {
   constructor(private readonly userService: UsersService) {}

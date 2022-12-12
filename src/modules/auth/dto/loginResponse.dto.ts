@@ -9,4 +9,7 @@ export class LoginResponseDto {
 
   @IsString()
   readonly email: string;
+
+  @IsString()
+  readonly name: string;
 }

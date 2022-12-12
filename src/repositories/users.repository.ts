@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common';
 import dataSource from '../infraestructure/database/database.providers';
 import { Users } from '../entities';
 import { CreateUsersDto, UpdateUsersDto } from '../modules/users/dto';
+import { encryptPassword } from '../utils/bcrypt';
 
 @Injectable()
 export class UsersRepository {
@@ -28,8 +29,10 @@ export class UsersRepository {
       const { name, password, email, rut } = createUserDto;
       const user = new Users();
 
+      const encryptedPassword = await encryptPassword(password);
+
       user.name = name;
-      user.password = password;
+      user.password = encryptedPassword as string;
       user.email = email;
       user.rut = rut;
       return this.usersRepository.save(user);

@@ -43,6 +43,7 @@ export class AuthService {
           HttpStatus.NOT_FOUND,
         );
       }
+
       const matchPassword = await verifyPassword(password, user.password);
       if (matchPassword) {
         delete user.password;
@@ -51,6 +52,7 @@ export class AuthService {
           token,
           email: user.email,
           rut,
+          name: user.name,
         };
         return response;
       } else {
