@@ -18,7 +18,7 @@ export class BranchOfficesRepository {
     }
   }
 
-  public async getBranchOfficeById(id: number): Promise<BranchOffices> {
+  public async getBranchOfficeById(id: string): Promise<BranchOffices> {
     try {
       return this.branchOfficeRepository.findOneBy({ id });
     } catch (error) {
@@ -42,7 +42,7 @@ export class BranchOfficesRepository {
   }
 
   public async updateBranchOffice(
-    id: number,
+    id: string,
     updateBranchOfficesDto: UpdateBranchOfficesDto,
   ): Promise<BranchOffices> {
     try {
@@ -56,7 +56,7 @@ export class BranchOfficesRepository {
     }
   }
 
-  public async deleteBranchOffice(id: number): Promise<BranchOffices> {
+  public async deleteBranchOffice(id: string): Promise<BranchOffices> {
     try {
       const branchOffice = await this.branchOfficeRepository.findOneBy({ id });
       return this.branchOfficeRepository.remove(branchOffice);

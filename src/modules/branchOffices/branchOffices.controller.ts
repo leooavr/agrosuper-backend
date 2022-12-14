@@ -34,7 +34,7 @@ export class BranchOfficesController {
 
   @Put('/:id')
   async updateBranchOffice(
-    @Param('id') id: number,
+    @Param('id') id: string,
     @Body() updateBranchOfficesDto: UpdateBranchOfficesDto,
   ): Promise<BranchOffices> {
     return await this.branchOfficesService.updateBranchOffice(
@@ -44,7 +44,7 @@ export class BranchOfficesController {
   }
 
   @Delete('/:id')
-  async deleteBranchOffice(@Param('id') id: number): Promise<BranchOffices> {
+  async deleteBranchOffice(@Param('id') id: string): Promise<BranchOffices> {
     return await this.branchOfficesService.deleteBranchOffice(id);
   }
 }

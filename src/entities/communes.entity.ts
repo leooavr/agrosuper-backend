@@ -30,7 +30,7 @@ export class Communes extends BaseEntity {
   @ManyToOne(() => Provinces, (province) => province.commune)
   province: Provinces;
 
-  @Column({ name: 'id_branch_offices', type: 'int' })
+  @Column({ name: 'id_branch_offices', type: 'text' })
   @JoinColumn({ name: 'id_branch_offices' })
   @ManyToOne(() => BranchOffices, (branchOffice) => branchOffice.communes)
   branchOffice: BranchOffices;

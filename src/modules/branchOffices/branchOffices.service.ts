@@ -47,7 +47,7 @@ export class BranchOfficesService {
   }
 
   async updateBranchOffice(
-    id: number,
+    id: string,
     updateBranchOfficesDto: UpdateBranchOfficesDto,
   ): Promise<BranchOffices> {
     try {
@@ -74,7 +74,7 @@ export class BranchOfficesService {
     }
   }
 
-  async deleteBranchOffice(id: number): Promise<BranchOffices> {
+  async deleteBranchOffice(id: string): Promise<BranchOffices> {
     try {
       this.logger.debug('deleting branch office');
       if (!id) {

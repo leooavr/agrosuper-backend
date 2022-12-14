@@ -11,5 +11,5 @@ export class CreateCommunesDto {
   readonly idProvince: number;
 
   @IsString()
-  readonly idBranchOffice: number;
+  readonly idBranchOffice: string;
 }

@@ -4,8 +4,8 @@ import { Communes } from './communes.entity';
 
 @Entity()
 export class BranchOffices extends BaseEntity {
-  @PrimaryColumn({ name: 'id_branch_offices', type: 'int' })
-  id: number;
+  @PrimaryColumn({ name: 'id_branch_offices', type: 'text' })
+  id: string;
 
   @Column({ name: 'name', type: 'text' })
   name: string;
