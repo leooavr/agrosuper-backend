@@ -9,7 +9,6 @@ import {
   Inject,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from '../../security/guards/jwt-auth.guard';
 
 import { MonthlyCommunalPopulationProjectionsService } from './monthlyCommunalPopulationProjections.service';
 import { MonthlyCommunalPopulationProjections } from '../../entities/monthlyCommunalPopulationProjections.entity';
@@ -18,7 +17,6 @@ import {
   UpdateMonthlyCommunalPopulationProjectionsDto,
 } from './dto';
 
-@UseGuards(JwtAuthGuard)
 @Controller('monthlyCommunalPopulationProjection')
 export class MonthlyCommunalPopulationProjectionsController {
   constructor(

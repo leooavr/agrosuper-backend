@@ -8,13 +8,11 @@ import {
   Delete,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from '../../security/guards/jwt-auth.guard';
 
 import { RegionsService } from './regions.service';
 import { Regions } from '../../entities/regions.entity';
 import { CreateRegionDto, UpdateRegionDto } from './dto';
 
-@UseGuards(JwtAuthGuard)
 @Controller('regions')
 export class RegionsController {
   constructor(private readonly regionsService: RegionsService) {}

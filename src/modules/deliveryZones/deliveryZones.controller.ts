@@ -8,7 +8,6 @@ import {
   Delete,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from '../../security/guards/jwt-auth.guard';
 
 import { DeliveryZonesService } from './deliveryZones.service';
 import { DeliveryZones } from '../../entities/deliveryZones.entity';
@@ -17,7 +16,6 @@ import {
   UpdateDeliveryZonesDto,
 } from '../deliveryZones/dto';
 
-@UseGuards(JwtAuthGuard)
 @Controller('deliveryZones')
 export class DeliveryZonesController {
   constructor(private readonly deliveryZonesService: DeliveryZonesService) {}

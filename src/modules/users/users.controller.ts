@@ -8,27 +8,27 @@ import {
   Delete,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from '../../security/guards/jwt-auth.guard';
 
 import { UsersService } from './users.service';
 import { Users } from '../../entities/users.entity';
 import { CreateUsersDto, UpdateUsersDto } from './dto';
+import { Public } from '../../security/decorators';
 
 @Controller('user')
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
-  @UseGuards(JwtAuthGuard)
+
   @Get()
   async getUser(): Promise<Users[]> {
     return await this.userService.getUsers();
   }
 
   @Post()
+  @Public()
   async createUser(@Body() createUserDto: CreateUsersDto): Promise<Users> {
     return await this.userService.createUser(createUserDto);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Put('/:id')
   async updateUser(
     @Param('id') id: string,
@@ -37,7 +37,6 @@ export class UsersController {
     return await this.userService.updateUser(id, updateUserDto);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Delete('/:id')
   async deleteUser(@Param('id') id: string): Promise<Users> {
     return await this.userService.deleteUser(id);

@@ -8,13 +8,11 @@ import {
   Delete,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from '../../security/guards/jwt-auth.guard';
 
 import { AreasCategoryService } from './areasCategory.service';
 import { AreasCategory } from '../../entities/areasCategory.entity';
 import { CreateAreaCategoryDto, UpdateAreaCategoryDto } from './dto';
 
-@UseGuards(JwtAuthGuard)
 @Controller('areasCategory')
 export class AreasCategoryController {
   constructor(private readonly areasCategoryService: AreasCategoryService) {}

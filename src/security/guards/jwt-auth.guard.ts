@@ -2,35 +2,62 @@ import {
   ExecutionContext,
   Injectable,
   CanActivate,
-  HttpException,
-  HttpStatus,
+  Inject,
 } from '@nestjs/common';
-import * as jwt from 'jsonwebtoken';
+import { Reflector } from '@nestjs/core';
+import { AuthService } from '../../modules/auth/auth.service';
+import { auth } from '../../utils/constants';
 
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
+  constructor(
+    @Inject(AuthService)
+    private readonly authService: AuthService,
+    private readonly reflector: Reflector,
+  ) {}
   async canActivate(context: ExecutionContext) {
+    const isPublic = this.reflector.get<boolean>(
+      'isPublic',
+      context.getHandler(),
+    );
+    if (isPublic) return true;
+
     const ctx = context.switchToHttp().getRequest();
 
-    if (!ctx.headers.authorization) {
+    const { access_token: accessToken, refresh_token: refreshToken } =
+      ctx.headers;
+
+    if (!accessToken) {
       return false;
     }
 
-    const { user } = await this.validateToken(ctx.headers.authorization);
-    ctx.req.user = { ...user };
+    const [isAccessToken, isRefreshToken] = await this.validateTokens(
+      accessToken,
+      refreshToken,
+    );
+
+    if (!isAccessToken && !isRefreshToken) {
+      return false;
+    }
+
+    if (!isAccessToken) {
+      const { user } = await this.authService.decodeToken(refreshToken);
+      const credentials = await this.authService.refreshCredentials(user);
+
+      ctx.headers[auth.access_token] = credentials.accessToken;
+      ctx.headers[auth.refresh_token] = credentials.refreshToken;
+    }
 
     return true;
   }
 
-  async validateToken(auth: string): Promise<any> {
-    if (auth.split(' ')[0] !== 'Bearer') {
-      throw new HttpException('Invalid Token', HttpStatus.UNAUTHORIZED);
-    }
-    const token = auth.split(' ')[1];
-    try {
-      return await jwt.verify(token, process.env.JWT_SECRET);
-    } catch (error) {
-      throw new HttpException('Invalid Token', HttpStatus.UNAUTHORIZED);
-    }
+  async validateTokens(
+    accessToken: string,
+    refreshToken: string,
+  ): Promise<[boolean, boolean]> {
+    return Promise.all([
+      this.authService.validateToken(accessToken),
+      this.authService.validateToken(refreshToken),
+    ]);
   }
 }

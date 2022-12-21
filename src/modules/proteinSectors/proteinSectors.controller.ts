@@ -8,13 +8,11 @@ import {
   Delete,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from '../../security/guards/jwt-auth.guard';
 
 import { ProteinSectorsService } from './proteinSectors.service';
 import { ProteinSectors } from '../../entities/proteinSectors.entity';
 import { CreateProteinSectorsDto, UpdateProteinSectorsDto } from './dto';
 
-@UseGuards(JwtAuthGuard)
 @Controller('proteinSectors')
 export class ProteinSectorsController {
   constructor(private readonly proteinSectorsService: ProteinSectorsService) {}

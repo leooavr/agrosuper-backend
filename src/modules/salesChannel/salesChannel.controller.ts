@@ -8,13 +8,11 @@ import {
   Delete,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from '../../security/guards/jwt-auth.guard';
 
 import { SalesChannelService } from './salesChannel.service';
 import { SalesChannel } from '../../entities/salesChannel.entity';
 import { CreateSalesChannelDto, UpdateSalesChannelDto } from './dto';
 
-@UseGuards(JwtAuthGuard)
 @Controller('salesChannel')
 export class SalesChannelController {
   constructor(private readonly salesChannelService: SalesChannelService) {}

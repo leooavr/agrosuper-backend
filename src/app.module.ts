@@ -22,6 +22,7 @@ import {
 } from './modules';
 
 import { DatabaseModule } from './infraestructure';
+import availableGuards from './security';
 @Module({
   imports: [
     DatabaseModule,
@@ -45,6 +46,6 @@ import { DatabaseModule } from './infraestructure';
     AuthModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [...availableGuards],
 })
 export class AppModule {}

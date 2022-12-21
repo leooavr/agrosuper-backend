@@ -25,5 +25,6 @@ const { JWT_SECRET } = process.env;
       useClass: UsersRepository,
     },
   ],
+  exports: [AuthService],
 })
 export class AuthModule {}

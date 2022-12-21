@@ -47,9 +47,14 @@ export class AuthService {
       const matchPassword = await verifyPassword(password, user.password);
       if (matchPassword) {
         delete user.password;
-        const token = this.jwtService.sign({ user });
+        const accessToken = this.jwtService.sign({ user });
+        const refreshToken = this.jwtService.sign(
+          { user },
+          { expiresIn: '1d' },
+        );
         const response: LoginResponseDto = {
-          token,
+          accessToken,
+          refreshToken,
           email: user.email,
           rut,
           name: user.name,
@@ -64,5 +69,30 @@ export class AuthService {
     } catch (error) {
       throw error;
     }
+  }
+
+  async refreshCredentials(
+    user: any,
+  ): Promise<{ accessToken: string; refreshToken: string }> {
+    const accessToken = this.jwtService.sign({ user });
+    const refreshToken = this.jwtService.sign({ user }, { expiresIn: '1d' });
+
+    return {
+      accessToken,
+      refreshToken,
+    };
+  }
+
+  async validateToken(token: string): Promise<boolean> {
+    try {
+      await this.jwtService.verifyAsync(token);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  async decodeToken(token: string): Promise<any> {
+    return this.jwtService.verifyAsync(token);
   }
 }

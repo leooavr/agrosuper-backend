@@ -2,7 +2,10 @@ import { IsString } from 'class-validator';
 
 export class LoginResponseDto {
   @IsString()
-  readonly token: string;
+  readonly accessToken: string;
+
+  @IsString()
+  readonly refreshToken: string;
 
   @IsString()
   readonly rut: string;

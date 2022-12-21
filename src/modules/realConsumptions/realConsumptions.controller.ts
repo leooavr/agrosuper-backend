@@ -8,13 +8,11 @@ import {
   Delete,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from '../../security/guards/jwt-auth.guard';
 
 import { RealConsumptionsService } from './realConsumptions.service';
 import { RealConsumptions } from '../../entities/realConsumptions.entity';
 import { CreateRealConsumptionsDto, UpdateRealConsumptionsDto } from './dto';
 
-@UseGuards(JwtAuthGuard)
 @Controller('realConsumptions')
 export class RealConsumptionsController {
   constructor(
