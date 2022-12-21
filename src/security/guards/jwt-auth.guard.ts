@@ -23,6 +23,7 @@ export class JwtAuthGuard implements CanActivate {
     if (isPublic) return true;
 
     const ctx = context.switchToHttp().getRequest();
+    const response = context.switchToHttp().getResponse();
 
     const { access_token: accessToken, refresh_token: refreshToken } =
       ctx.headers;
@@ -43,9 +44,9 @@ export class JwtAuthGuard implements CanActivate {
     if (!isAccessToken) {
       const { user } = await this.authService.decodeToken(refreshToken);
       const credentials = await this.authService.refreshCredentials(user);
-
-      ctx.headers[auth.access_token] = credentials.accessToken;
-      ctx.headers[auth.refresh_token] = credentials.refreshToken;
+      response.setHeader('Access-Control-Expose-Headers', '*');
+      response.setHeader(auth.refresh_token, credentials.refreshToken);
+      response.setHeader(auth.access_token, credentials.accessToken);
     }
 
     return true;
